@@ -1,10 +1,10 @@
-# Machinekit for the C.H.I.P
-The purpose of this project is to make using Machinekit on the [NextThing C.H.I.P](https://getchip.com/) as comfortable as possible.
+# Machinekit for the CHIP
+The purpose of this project is to make using Machinekit on the [NextThing CHIP](https://getchip.com/) as comfortable as possible.
 
-If your C.H.I.P. is already connected to the internet, you can skip ahead to <a href="#name">the installation</a>.
+If your CHIP. is already connected to the internet, you can skip ahead to <a href="#name">the installation</a>.
 
 ## Setup WiFi
-First of all, you need to connect your C.H.I.P. to the web. Do achieve this you connect the C.H.I.P. to WiFi network.
+First of all, you need to connect your CHIP. to the web. Do achieve this you connect the CHIP. to WiFi network.
 
 First, list the available networks.
 
@@ -35,12 +35,12 @@ Once connected you are ready to install Machinekit.
 <a name="install"/>
 ## Install
 
-Installing Machinekit on the C.H.I.P is as easy as executing the following line:
+Installing Machinekit on the CHIP is as easy as executing the following line:
 ``` bash
 curl -sSL http://bit.ly/2cyf0At | sudo -E bash -
 ```
 
-This script will download and install Machinekit and an RT-PREEMPT kernel for the C.H.I.P 4.4 images. *Caution:* During the installation, it will download a few hundred megabytes of data.
+This script will download and install Machinekit and an RT-PREEMPT kernel for the CHIP 4.4 images. *Caution:* During the installation, it will download a few hundred megabytes of data.
 
 ## Test
 Now it is time to download and run the first Machinekit configuration.
@@ -103,7 +103,7 @@ Now you are ready to play around with [Machinekit](http://machinekit.io)
 
 ## Setup USB OTG networking
 
-If you want to use USB networking on your C.H.I.P., you can use following commands.
+If you want to use USB networking on your CHIP., you can use following commands.
 
 ``` bash
 sudo editor /etc/network/interfaces.d/usb0
@@ -121,4 +121,4 @@ Start the network by running:
 sudo ifup usb0
 ```
 
-On your host computer, you have to use manual IPv4 address `192.168.7.2`.
+On your host computer, you have to use manual IPv4 address `192.168.7.2` and netmask `255.255.255.0`.

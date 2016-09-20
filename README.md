@@ -30,7 +30,7 @@ Or with password:
 sudo nmcli device wifi connect '(your wifi network name/SSID)' password '(your wifi password)' ifname wlan0
 ```
 
-Once connect you are ready to install Machinekit.
+Once connected you are ready to install Machinekit.
 
 <a name="install"/>
 ## Install
@@ -50,7 +50,7 @@ First, install git.
 sudo apt install git
 ```
 
-Then, clone the `hal_hello_chip` configuration and run it:
+Then, clone the `hal_hello_chip` configuration and execute the `run.py`:
 ``` bash
 cd
 mkdir repos

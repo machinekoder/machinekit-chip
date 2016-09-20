@@ -5,6 +5,18 @@ query-package () {
     dpkg-query -W -f='${Status}' $1 2>/dev/null | grep -c "ok installed"
 }
 
+OLD_NAME=4.4.11-ntc
+NAME=4.4.11-rt20
+
+uname -r | grep $OLD_NAME > /dev/null
+if [ $? -eq 1 ]; then
+    echo "current kernel != $OLD_NAME, will not install RT-PREEMPT kernel"
+    PREEMPT=0
+else
+    echo "current kernel == $OLD_NAME, will install RT-PREEMPT kernel"
+    PREEMPT=1
+fi
+
 if [ $(query-package machinekit-rt-preempt) -eq 1 ]; then
     echo "Machinekit already installed"
 else
@@ -15,11 +27,19 @@ else
     /etc/apt/sources.list.d/machinekit.list"
     sudo apt update
     echo "Installing Machinekit packages"
-    apt install -y machinekit-dev machinekit-rt-preempt
+    if [ $PREEMPT -eq 1 ]; then
+        apt install -y machinekit-dev machinekit-rt-preempt
+    else
+        apt install -y machinekit-dev machinekit-posix
+    fi
+fi
+
+if [ $PREEMPT -eq 0 ]; then
+    echo "Skipping kernel install"
+    exit 0
 fi
 
 echo "Download precompiled RT-PREEMPT kernel"
-NAME=4.4.11-rt20
 # download pre-compiled kernel RT-PREEMPT
 cd /tmp
 wget https://raw.githubusercontent.com/machinekoder/machinekit-chip/master/kernel/$NAME.tar.gz

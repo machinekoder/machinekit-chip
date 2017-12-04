@@ -28,9 +28,9 @@ else
     sudo apt update
     echo "Installing Machinekit packages"
     if [ $PREEMPT -eq 1 ]; then
-        apt install -y machinekit-dev machinekit-rt-preempt
+        apt install -y machinekit-rt-preempt
     else
-        apt install -y machinekit-dev machinekit-posix
+        apt install -y machinekit-posix
     fi
 fi
 
